@@ -1,12 +1,13 @@
 
 import courses.*;
 import exceptions.*;
+import grades.Grade;
 import people.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class Demo {
-    private static final Logger logger = LogManager.getLogger(Demo.class.getName());
+    private static final Logger LOGGER = LogManager.getLogger(Demo.class.getName());
 
     public static void main(String[] args) {
         //Creating an object of University class
@@ -31,7 +32,7 @@ public class Demo {
             undergraduate2 = new UndergraduateStudent("Ivan", "Gonazalez", "Igonzalez@gmail.com", "Medical", 2, 20);
             undergraduate3 = new UndergraduateStudent("Chris", "White", "cwhite@gmail.com", "Physics", 4, 21);
         } catch (InvalidAgeException | InvalidNameFormatException | InvalidEmailException ex) {
-            System.out.println(ex.getMessage());
+            LOGGER.info(ex.getMessage());
         }
         //Adding students to University
         university.addStudent(graduate1);
@@ -105,7 +106,7 @@ public class Demo {
             physicsLab.enrollStudent(undergraduate1);
             biologyLab.enrollStudent(undergraduate2);
         } catch (MaxStudentsReachedException ex) {
-            System.out.println("Enrollment exception occurred : " + ex.getMessage());
+            LOGGER.info("Enrollment exception occurred : " + ex.getMessage());
         }
 
         //Adding courses to University
@@ -134,14 +135,14 @@ public class Demo {
         Grade grade = new Grade();
 
         //Check the student's grades
-        System.out.println(undergraduate1.getGrades());
+        LOGGER.info(undergraduate1.getGrades());
 
         //Check the graduate student's thesis progress
-        System.out.println();
+        LOGGER.info(" ");
         graduate1.printThesisProgress();
 
         //Make the graduate student study hard
-        System.out.println();
+        LOGGER.info(" ");
         graduate1.study();
 
         //Make the undergraduate student study hard
@@ -150,12 +151,12 @@ public class Demo {
         undergraduate1.study(math);
 
         //Calculate GPA
-        System.out.println(grade.calculateGPA(undergraduate1));
-        System.out.println();
+        LOGGER.info(grade.calculateGPA(undergraduate1));
+        LOGGER.info(" ");
 
         //Student gives an exam
         undergraduate1.takeExam(math);
-        System.out.println();
+        LOGGER.info(" ");
 
         //Tuition methods
         undergraduate1.calculateTuition();
@@ -163,14 +164,14 @@ public class Demo {
         undergraduate1.payTuition();
 
         //calculate revenue
-        System.out.println();
+        LOGGER.info(" ");
         math.printCourseRevenue();
 
-        System.out.println();
+        LOGGER.info(" ");
         university.getRevenue();
 
         //Print the University Details
-        System.out.println();
+        LOGGER.info(" ");
         university.printDetails();
 
         //Average course attendance

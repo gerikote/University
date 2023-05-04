@@ -1,10 +1,12 @@
+package grades;
 
 import people.Student;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+
 public class Grade {
-    private static final Logger logger = LogManager.getLogger(Grade.class);
+    private static final Logger LOGGER = LogManager.getLogger(Grade.class);
     private GradeCalculator gradeCalulator;
 
     public Grade() {
@@ -12,7 +14,7 @@ public class Grade {
     }
 
     public int calculateGPA(Student student) {
-        System.out.print("The student's" + student.getFirstName() + " " + student.getLastName() + " gpa is : ");
+        LOGGER.info("The student's" + student.getFirstName() + " " + student.getLastName() + " gpa is : ");
         return gradeCalulator.calculateGrade(student);
     }
 

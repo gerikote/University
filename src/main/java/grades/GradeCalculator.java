@@ -1,3 +1,4 @@
+package grades;
 
 import courses.Course;
 import people.Student;
