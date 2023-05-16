@@ -1,10 +1,19 @@
 
 import courses.*;
+import enums.*;
 import exceptions.*;
 import grades.Grade;
+import interfaces.IEntityFilter;
+import interfaces.IStudentFinder;
+import interfaces.IWageComparator;
 import people.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.*;
+import java.util.stream.Collectors;
 
 public class Demo {
     private static final Logger LOGGER = LogManager.getLogger(Demo.class.getName());
@@ -23,17 +32,24 @@ public class Demo {
 
         try {
             //Creating Graduate Students
-            graduate1 = new GraduateStudent("John", "Brown", "johnbrown@gmail.com", "Biology", "DNA structure analysis", 22);
-            graduate2 = new GraduateStudent("Maria", "Foss", "mfos@gmail.com", "Math", "Complex number analysis", 18);
-            graduate3 = new GraduateStudent("Ryan", "Creed", "rcreed@gmail.com", "Engineer", "Structural mechanics", 45);
+            graduate1 = new GraduateStudent("John", "Brown", "johnbrown@gmail.com", Major.BIOLOGY, ThesisTopic.ROBOTICS, 22);
+            graduate2 = new GraduateStudent("Maria", "Foss", "mfos@gmail.com", Major.COMPUTER_SCIENCE, ThesisTopic.CYBERSECURITY, 18);
+            graduate3 = new GraduateStudent("Ryan", "Creed", "rcreed@gmail.com", Major.ELECTRICAL_ENGINEERING, ThesisTopic.CLOUD_COMPUTING, 45);
 
             //Creating Undergraduate Students
-            undergraduate1 = new UndergraduateStudent("Diego", "Gonazalez", "dgonzalez@gmail.com", "Business", 1, 23);
-            undergraduate2 = new UndergraduateStudent("Ivan", "Gonazalez", "Igonzalez@gmail.com", "Medical", 2, 20);
-            undergraduate3 = new UndergraduateStudent("Chris", "White", "cwhite@gmail.com", "Physics", 4, 21);
+            undergraduate1 = new UndergraduateStudent("Diego", "Gonazalez", "dgonzalez@gmail.com", Major.BIOLOGY, 1, 23);
+            undergraduate2 = new UndergraduateStudent("Ivan", "Gonazalez", "Igonzalez@gmail.com", Major.CHEMISTRY, 2, 20);
+            undergraduate3 = new UndergraduateStudent("Chris", "White", "cwhite@gmail.com", Major.BUSINESS_ADMINISTRATION, 4, 21);
         } catch (InvalidAgeException | InvalidNameFormatException | InvalidEmailException ex) {
             LOGGER.info(ex.getMessage());
         }
+
+        //Adding undergraduate students to an ArrayList
+        ArrayList<UndergraduateStudent> undergraduateStudents = new ArrayList<>();
+        undergraduateStudents.add(undergraduate1);
+        undergraduateStudents.add(undergraduate2);
+        undergraduateStudents.add(undergraduate3);
+
         //Adding students to University
         university.addStudent(graduate1);
         university.addStudent(graduate2);
@@ -41,6 +57,15 @@ public class Demo {
         university.addStudent(undergraduate1);
         university.addStudent(undergraduate2);
         university.addStudent(undergraduate3);
+
+        //Adding students to an ArrayList
+        ArrayList<Student> students = new ArrayList<>();
+        students.add(graduate1);
+        students.add(graduate2);
+        students.add(graduate3);
+        students.add(undergraduate1);
+        students.add(undergraduate2);
+        students.add(undergraduate3);
 
         //Declare staff variables outside of try block
         AcademicStaff professor1 = null;
@@ -65,13 +90,14 @@ public class Demo {
             adminStaff3 = new AdministrativeStaff("John", "Wig", "jwigg@gmail.com", 76);
             labAs1 = new AdministrativeStaff("Carl", "Wig", "carl@gmail.com", 29);
             labAs2 = new AdministrativeStaff("Nick", "Wig", "nickw@gmail.com", 35);
+
         } catch (InvalidAgeException | InvalidNameFormatException | InvalidEmailException ex) {
             System.out.println(ex.getMessage());
         }
 
         //Adding responsibilities for admin staff
-        adminStaff1.addResponsisbility("library organisation");
-        labAs1.addResponsisbility("Prepare lab equipment");
+        adminStaff1.addResponsisbility(AdministrativeResponsibility.ADMISSIONS);
+        labAs1.addResponsisbility(AdministrativeResponsibility.LAB_ASSISTANCE);
 
         //Adding staff to University
         university.addStaff(professor1);
@@ -84,13 +110,24 @@ public class Demo {
         university.addStaff(labAs2);
 
         //Creating lectures
-        Lecture math = new Lecture("101", "Math", professor1);
-        Lecture biology = new Lecture("105", "Biology", professor2);
-        Lecture physics = new Lecture("106", "Physics", professor3);
+        Lecture math = new Lecture("101", "Math", professor1, LectureRoom.LECTURE_ROOM_A);
+        Lecture biology = new Lecture("105", "Biology", professor2,LectureRoom.LECTURE_ROOM_B);
+        Lecture physics = new Lecture("106", "Physics", professor3,LectureRoom.LECTURE_ROOM_C);
+
+        //Adding lectures in an arrayList
+        ArrayList<Lecture> lectures = new ArrayList<>();
+        lectures.add(math);
+        lectures.add(biology);
+        lectures.add(physics);
 
         //Creating labs
-        Lab physicsLab = new Lab("101", "Physics", labAs1);
-        Lab biologyLab = new Lab("102", "Biology", labAs2);
+        Lab physicsLab = new Lab("101", "Physics", labAs1, LabRoom.LAB_ROOM_A);
+        Lab biologyLab = new Lab("102", "Biology", labAs2,LabRoom.LAB_ROOM_B);
+
+        //Adding labs in an arrayList
+        ArrayList<Lab> labs = new ArrayList<>();
+        labs.add(physicsLab);
+        labs.add(biologyLab);
 
         //Enrolling students in classes
         try {
@@ -177,6 +214,103 @@ public class Demo {
         //Average course attendance
         Course.getAverageAttendance();
 
+        //Predicate - Finds the students that are on the first year
+        Predicate<UndergraduateStudent> underGraduateInFirstYear = undergraduateStudent -> undergraduateStudent.getYearLevel() == 1;
+
+        for (UndergraduateStudent undergraduateStudent : undergraduateStudents) {
+            if (underGraduateInFirstYear.test(undergraduateStudent)) {
+                LOGGER.info(undergraduateStudent.getFirstName() + " " + undergraduateStudent.getLastName() +
+                        " is on the first year of his studies");
+            }
+        }
+
+        //Function - Gets the Lectures Professor
+        Function<Lecture, Staff> getProfessorForCourse = lecture -> lecture.getLecturer();
+        for (Lecture lecture : lectures) {
+            String profesorName = getProfessorForCourse.apply(lecture).toString();
+            LOGGER.info("For the lecture " + lecture.getCourseName() + " the lecturer is " + profesorName);
+        }
+
+        //Consumer - Returns the course code for a course
+        Consumer<Lab> printLabCode = lab -> LOGGER.info("Lab code for lab " + lab.getCourseName() + " is: " + lab.getCourseCode());
+        for (Lab lab : labs) {
+            printLabCode.accept(lab);
+        }
+
+
+        //Supplier - Creates a new Undergraduate Student and prints his name
+        Supplier<UndergraduateStudent> studentSupplier = () -> {
+            try {
+                return new UndergraduateStudent("John", "Green", "johnGreen@gmail.com", Major.BUSINESS_ADMINISTRATION, 3, 34);
+            } catch (InvalidAgeException e) {
+                throw new RuntimeException(e);
+            } catch (InvalidNameFormatException e) {
+                throw new RuntimeException(e);
+            } catch (InvalidEmailException e) {
+                throw new RuntimeException(e);
+            }
+        };
+        UndergraduateStudent newStudent = studentSupplier.get();
+        LOGGER.info("The new students name is : " + newStudent.getFirstName() + " " + newStudent.getLastName());
+
+        //BiPredicate - Takes 2 undergrads and checks if they are at the same year level
+        BiPredicate<UndergraduateStudent, UndergraduateStudent> checkIfInSameYear = (a, b) -> a.getYearLevel() == b.getYearLevel();
+        boolean isSameYear = checkIfInSameYear.test(undergraduate1, undergraduate2);
+        LOGGER.info("Is " + undergraduate1.getFirstName() + " and " + undergraduate2.getFirstName() +
+                " at the same year level ? " + isSameYear);
+
+        //Lambda Generics
+        //IStudentFinder - Find a student by id
+        IStudentFinder<Student> studentFinder = studentId -> {
+            for(Student student : students){
+                if(student.getStudentID().equals(studentId)){
+                    return student;
+                }
+            }
+            return null;
+        };
+
+        String targetStudentId="2";
+        Student foundStudent =studentFinder.findStudent(targetStudentId);
+        if(foundStudent!=null){
+            LOGGER.info("Found student : " +foundStudent.getFirstName() + " " +foundStudent.getLastName());
+        }else{
+            LOGGER.info("Student not found");
+        }
+
+        //IEntityFilter - Filters students by attribute
+        IEntityFilter<Student> undergraduateFilter=list->{
+            List<Student> filteredList = new ArrayList<>();
+            for(Student student : students){
+                if(student instanceof UndergraduateStudent){
+                    filteredList.add(student);
+                }
+            }
+            return filteredList;
+        };
+
+        List<Student> undergrads= undergraduateFilter.filter(students);
+        LOGGER.info("List of undergrads : " +undergrads );
+
+        //IWageComparator - Compares the wages between 2 staff members
+        IWageComparator<AcademicStaff> wageComparator =(staff1,staff2)->{
+            double wage1 =staff1.calculateWage();
+            double wage2=staff2.calculateWage();
+
+            //Compare the wages
+            if (wage1<wage2){
+                return -1;
+            } else if (wage1>wage2) {
+                return 1;
+            }else {
+                return 0;
+            }
+        };
+
+        int result = wageComparator.compareWages(professor1,professor2);
+        LOGGER.info("Comparing the salaries of : " +professor1.getFirstName() + " " + professor1.getLastName() +
+               "\n" + "and " + professor2.getFirstName() + " " + professor2.getLastName() +
+                "\n" + "result: " + result + "\n" +"0=equal , -1 = wage1<wage2 , 1 = wage1>wage2");
     }
 }
 

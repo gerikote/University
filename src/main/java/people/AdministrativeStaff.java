@@ -1,5 +1,6 @@
 package people;
 
+import enums.AdministrativeResponsibility;
 import exceptions.InvalidAgeException;
 import exceptions.InvalidEmailException;
 import exceptions.InvalidNameFormatException;
@@ -11,18 +12,18 @@ import java.util.ArrayList;
 
 public final class AdministrativeStaff extends Staff implements IPayable {
     private static final Logger LOGGER = LogManager.getLogger(AcademicStaff.class);
-    private ArrayList<String> responsibilities;
+    private ArrayList<AdministrativeResponsibility> responsibilities;
 
     public AdministrativeStaff(String firstName, String lastName, String email, int age) throws InvalidAgeException, InvalidNameFormatException, InvalidEmailException {
         super(firstName, lastName, email, age);
         this.responsibilities = new ArrayList<>();
     }
 
-    public ArrayList<String> getResponsibilities() {
+    public ArrayList<AdministrativeResponsibility> getResponsibilities() {
         return responsibilities;
     }
 
-    public void addResponsisbility(String responsibility) {
+    public void addResponsisbility(AdministrativeResponsibility responsibility) {
         this.responsibilities.add(responsibility);
     }
 

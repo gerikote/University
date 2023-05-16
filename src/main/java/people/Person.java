@@ -42,6 +42,10 @@ public abstract class Person {
         return email.matches(regex);
     }
 
+    public int getAge() {
+        return age;
+    }
+
     public String getFirstName() {
         return firstName;
     }

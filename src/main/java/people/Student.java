@@ -1,6 +1,7 @@
 package people;
 
 import courses.*;
+import enums.Major;
 import exceptions.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -11,11 +12,11 @@ public abstract class Student extends Person {
     private static final Logger LOGGER = LogManager.getLogger(Student.class);
     private static int counter = 0;
     private String studentID;
-    private String major;
+    private Major major;
     private Map<Course, Integer> grades;
     protected List<Course> enrolledCourses;
 
-    public Student(String firstName, String lastName, String email, String major, int age) throws InvalidAgeException, InvalidNameFormatException, InvalidEmailException {
+    public Student(String firstName, String lastName, String email, Major major, int age) throws InvalidAgeException, InvalidNameFormatException, InvalidEmailException {
         super(firstName, lastName, email, age);
         this.studentID = generateStudentID();
         this.major = major;
@@ -100,11 +101,11 @@ public abstract class Student extends Person {
         this.studentID = studentID;
     }
 
-    public String getMajor() {
+    public Major getMajor() {
         return major;
     }
 
-    public void setMajor(String major) {
+    public void setMajor(Major major) {
         this.major = major;
     }
 

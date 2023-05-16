@@ -1,6 +1,7 @@
 package people;
 
 import courses.Course;
+import enums.Major;
 import exceptions.InvalidAgeException;
 import exceptions.InvalidEmailException;
 import exceptions.InvalidNameFormatException;
@@ -13,7 +14,7 @@ public final class UndergraduateStudent extends Student implements IStudyable {
     private static final Logger LOGGER = LogManager.getLogger(UndergraduateStudent.class);
     private int yearLevel;
 
-    public UndergraduateStudent(String firstName, String lastName, String email, String major, int yearLevel, int age) throws InvalidAgeException, InvalidNameFormatException, InvalidEmailException {
+    public UndergraduateStudent(String firstName, String lastName, String email, Major major, int yearLevel, int age) throws InvalidAgeException, InvalidNameFormatException, InvalidEmailException {
         super(firstName, lastName, email, major, age);
         this.yearLevel = yearLevel;
     }

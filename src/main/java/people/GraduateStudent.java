@@ -1,5 +1,7 @@
 package people;
 
+import enums.Major;
+import enums.ThesisTopic;
 import exceptions.*;
 import interfaces.IStudyable;
 import org.apache.logging.log4j.LogManager;
@@ -7,10 +9,14 @@ import org.apache.logging.log4j.Logger;
 
 public final class GraduateStudent extends Student implements IStudyable {
     private static final Logger LOGGER = LogManager.getLogger(GraduateStudent.class);
-    private String thesisTopic;
+    private ThesisTopic thesisTopic;
     private int thesisProgress;
 
-    public GraduateStudent(String firstName, String lastName, String email, String major, String thesisTopic, int age) throws InvalidAgeException, InvalidNameFormatException, InvalidEmailException {
+    public int getThesisProgress() {
+        return thesisProgress;
+    }
+
+    public GraduateStudent(String firstName, String lastName, String email, Major major, ThesisTopic thesisTopic, int age) throws InvalidAgeException, InvalidNameFormatException, InvalidEmailException {
         super(firstName, lastName, email, major, age);
         this.thesisTopic = thesisTopic;
         this.thesisProgress = 30;
@@ -32,11 +38,11 @@ public final class GraduateStudent extends Student implements IStudyable {
                 " progress at his thesis is currently at " + thesisProgress + "%");
     }
 
-    public String getThesisTopic() {
+    public ThesisTopic getThesisTopic() {
         return thesisTopic;
     }
 
-    public void setThesisTopic(String thesisTopic) {
+    public void setThesisTopic(ThesisTopic thesisTopic) {
         this.thesisTopic = thesisTopic;
     }
 
