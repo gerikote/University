@@ -111,8 +111,8 @@ public class Demo {
 
         //Creating lectures
         Lecture math = new Lecture("101", "Math", professor1, LectureRoom.LECTURE_ROOM_A);
-        Lecture biology = new Lecture("105", "Biology", professor2,LectureRoom.LECTURE_ROOM_B);
-        Lecture physics = new Lecture("106", "Physics", professor3,LectureRoom.LECTURE_ROOM_C);
+        Lecture biology = new Lecture("105", "Biology", professor2, LectureRoom.LECTURE_ROOM_B);
+        Lecture physics = new Lecture("106", "Physics", professor3, LectureRoom.LECTURE_ROOM_C);
 
         //Adding lectures in an arrayList
         ArrayList<Lecture> lectures = new ArrayList<>();
@@ -122,7 +122,7 @@ public class Demo {
 
         //Creating labs
         Lab physicsLab = new Lab("101", "Physics", labAs1, LabRoom.LAB_ROOM_A);
-        Lab biologyLab = new Lab("102", "Biology", labAs2,LabRoom.LAB_ROOM_B);
+        Lab biologyLab = new Lab("102", "Biology", labAs2, LabRoom.LAB_ROOM_B);
 
         //Adding labs in an arrayList
         ArrayList<Lab> labs = new ArrayList<>();
@@ -261,56 +261,70 @@ public class Demo {
 
         //Lambda Generics
         //IStudentFinder - Find a student by id
-        IStudentFinder<Student> studentFinder = studentId -> {
-            for(Student student : students){
-                if(student.getStudentID().equals(studentId)){
-                    return student;
-                }
-            }
-            return null;
-        };
+        IStudentFinder<Student> studentFinder = studentId ->
+                students.stream()
+                        .filter(student -> student.getStudentID().equals(studentId))
+                        .findFirst()
+                        .orElse(null);
 
-        String targetStudentId="2";
-        Student foundStudent =studentFinder.findStudent(targetStudentId);
-        if(foundStudent!=null){
-            LOGGER.info("Found student : " +foundStudent.getFirstName() + " " +foundStudent.getLastName());
-        }else{
+        String targetStudentId = "2";
+        Student foundStudent = studentFinder.findStudent(targetStudentId);
+        if (foundStudent != null) {
+            LOGGER.info("Found student: " + foundStudent.getFirstName() + " " + foundStudent.getLastName());
+        } else {
             LOGGER.info("Student not found");
         }
 
-        //IEntityFilter - Filters students by attribute
-        IEntityFilter<Student> undergraduateFilter=list->{
-            List<Student> filteredList = new ArrayList<>();
-            for(Student student : students){
-                if(student instanceof UndergraduateStudent){
-                    filteredList.add(student);
-                }
-            }
-            return filteredList;
-        };
 
-        List<Student> undergrads= undergraduateFilter.filter(students);
-        LOGGER.info("List of undergrads : " +undergrads );
+        //IEntityFilter - Filters students by attribute
+        IEntityFilter<Student> undergraduateFilter = list ->
+                list.stream()
+                        .filter(student -> student instanceof UndergraduateStudent)
+                        .collect(Collectors.toList());
+
+
+        List<Student> undergrads = undergraduateFilter.filter(students);
+        LOGGER.info("List of undergrads : " + undergrads);
 
         //IWageComparator - Compares the wages between 2 staff members
-        IWageComparator<AcademicStaff> wageComparator =(staff1,staff2)->{
-            double wage1 =staff1.calculateWage();
-            double wage2=staff2.calculateWage();
+        IWageComparator<AcademicStaff> wageComparator = (staff1, staff2) -> {
+            double wage1 = staff1.calculateWage();
+            double wage2 = staff2.calculateWage();
 
             //Compare the wages
-            if (wage1<wage2){
-                return -1;
-            } else if (wage1>wage2) {
-                return 1;
-            }else {
-                return 0;
+            if (wage1 < wage2) {
+                return WageComparisonResult.LESS_THAN;
+            } else if (wage1 > wage2) {
+                return WageComparisonResult.GREATER_THAN;
+            } else {
+                return WageComparisonResult.EQUAL;
             }
         };
 
-        int result = wageComparator.compareWages(professor1,professor2);
-        LOGGER.info("Comparing the salaries of : " +professor1.getFirstName() + " " + professor1.getLastName() +
-               "\n" + "and " + professor2.getFirstName() + " " + professor2.getLastName() +
-                "\n" + "result: " + result + "\n" +"0=equal , -1 = wage1<wage2 , 1 = wage1>wage2");
+        WageComparisonResult result = wageComparator.compareWages(professor1, professor2);
+        LOGGER.info("Comparing the salaries of : " + professor1.getFirstName() + " " + professor1.getLastName() +
+                "\n" + "and " + professor2.getFirstName() + " " + professor2.getLastName() +
+                "\n" + "result: " + result);
+
+        //Using streams to filter
+        List<Student> graduateStudents = new ArrayList<>();
+        graduateStudents = students.stream()
+                .filter(x -> x instanceof GraduateStudent).
+                collect(Collectors.toList());
+        LOGGER.info("Graduate students " + graduateStudents);
+
+        List<Student> highTuition = undergrads.stream()
+                .filter(x -> x.calculateTuition() > 300)
+                .collect(Collectors.toList());
+        LOGGER.info(highTuition);
+
+        lectures.stream()
+                .filter(lecture -> lecture.getLecturer() != null)
+                .forEach(lecture -> System.out.println(lecture.getLecturer()));
+
+        labs.stream()
+                .filter(x->x.getCourseCode()=="101")
+                .forEach(x->System.out.println(x.getCourseName()));
     }
 }
 
