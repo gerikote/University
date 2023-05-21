@@ -3,11 +3,10 @@ package reflection;
 import people.Student;
 
 import java.lang.reflect.*;
-import java.util.Arrays;
 
 public class Reflection {
-    public static void main(String[] args) {
-        Class<?> studentClass = Student.class;
+    public static void main(String[] args) throws ClassNotFoundException {
+        Class<?> studentClass = Class.forName("people.Student");
         printConstructors(studentClass);
         printMethods(studentClass);
         printFields(studentClass);
@@ -36,8 +35,8 @@ public class Reflection {
         Field[] fields = className.getDeclaredFields();
         for (Field f : fields) {
             System.out.println("Field: " + f.getName() + "\n" +
-                               "Type: " +  f.getType() + "\n" +
-                               "Modifiers: " + Modifier.toString(f.getModifiers()));
+                    "Type: " + f.getType() + "\n" +
+                    "Modifiers: " + Modifier.toString(f.getModifiers()));
         }
     }
 }

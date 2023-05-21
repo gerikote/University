@@ -95,25 +95,25 @@ public class GenericLinkedList<T> {
         }
         if (index == 0) {
             head = new GenericNode<T>(data);
-        }else{
-            GenericNode<T> prev= null;
-            GenericNode<T> curr=head;
-            for (int i=0;i<index;i++){
-                prev=curr;
-                curr=curr.next;
+        } else {
+            GenericNode<T> prev = null;
+            GenericNode<T> curr = head;
+            for (int i = 0; i < index; i++) {
+                prev = curr;
+                curr = curr.next;
             }
-            prev.next=new GenericNode<T>(data);
-            prev.next.next=curr;
+            prev.next = new GenericNode<T>(data);
+            prev.next.next = curr;
         }
     }
 
-    public T get(int index){
-        if(index<0|| index>=size()){
+    public T get(int index) {
+        if (index < 0 || index >= size()) {
             throw new IndexOutOfBoundsException("Index " + index + " is out of bound for list of size " + size());
         }
         GenericNode<T> curr = head;
-        for(int i=0; i<index;i++){
-            curr=curr.next;
+        for (int i = 0; i < index; i++) {
+            curr = curr.next;
         }
         return curr.data;
     }
@@ -138,8 +138,6 @@ public class GenericLinkedList<T> {
             }
             curr = curr.next;
         }
-
         return false;
     }
-
 }

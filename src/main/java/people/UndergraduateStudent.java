@@ -35,7 +35,6 @@ public final class UndergraduateStudent extends Student implements IStudyable {
         } catch (NotEnrolledException ex) {
             LOGGER.info(ex.getMessage());
         }
-
     }
 
     public int getYearLevel() {

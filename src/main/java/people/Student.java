@@ -28,7 +28,7 @@ public abstract class Student extends Person {
         enrolledCourses.add(course);
     }
 
-    public double calculateTuition() {
+    public double getTuition() {
         int totalTuition = 0;
         for (int i = 0; i < enrolledCourses.size(); i++) {
             totalTuition += enrolledCourses.get(i).TUITION;
@@ -41,7 +41,7 @@ public abstract class Student extends Person {
 
     public void payTuition() {
         LOGGER.info("The Student " + firstName + " " + lastName + " with student id : " + studentID + "\n"
-                + " has successfully paid his total tuition of " + this.calculateTuition() + "$");
+                + " has successfully paid his total tuition of " + this.getTuition() + "$");
     }
 
     private final String generateStudentID() {
@@ -59,7 +59,7 @@ public abstract class Student extends Person {
             LOGGER.info("The student is studying " + course.getCourseName());
             int currentGrade = grades.get(course);
             grades.put(course, currentGrade + 1);
-            LOGGER.info("The new grades for student " + getFirstName() + " " + getLastName() + " are :" + getGrades() +"\n");
+            LOGGER.info("The new grades for student " + getFirstName() + " " + getLastName() + " are :" + getGrades() + "\n");
         } catch (NotEnrolledException ex) {
             LOGGER.info("Error: " + ex.getMessage());
         }
@@ -132,7 +132,6 @@ public abstract class Student extends Person {
         if (!this.getEmail().equals(other.getEmail())) {
             return false;
         }
-
         return true;
     }
 }

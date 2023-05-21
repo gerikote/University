@@ -9,6 +9,9 @@ import interfaces.IWageComparator;
 import people.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import threads.Client;
+import threads.ThreadByExtension;
+import threads.ThreadByRunnable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -196,7 +199,7 @@ public class Demo {
         LOGGER.info(" ");
 
         //Tuition methods
-        undergraduate1.calculateTuition();
+        undergraduate1.getTuition();
         System.out.println();
         undergraduate1.payTuition();
 
@@ -275,13 +278,11 @@ public class Demo {
             LOGGER.info("Student not found");
         }
 
-
         //IEntityFilter - Filters students by attribute
         IEntityFilter<Student> undergraduateFilter = list ->
                 list.stream()
                         .filter(student -> student instanceof UndergraduateStudent)
                         .collect(Collectors.toList());
-
 
         List<Student> undergrads = undergraduateFilter.filter(students);
         LOGGER.info("List of undergrads : " + undergrads);
@@ -314,7 +315,7 @@ public class Demo {
         LOGGER.info("Graduate students " + graduateStudents);
 
         List<Student> highTuition = undergrads.stream()
-                .filter(x -> x.calculateTuition() > 300)
+                .filter(x -> x.getTuition() > 300)
                 .collect(Collectors.toList());
         LOGGER.info(highTuition);
 
@@ -323,8 +324,18 @@ public class Demo {
                 .forEach(lecture -> System.out.println(lecture.getLecturer()));
 
         labs.stream()
-                .filter(x->x.getCourseCode()=="101")
-                .forEach(x->System.out.println(x.getCourseName()));
+                .filter(x -> x.getCourseCode() == "101")
+                .forEach(x -> System.out.println(x.getCourseName()));
+
+        //Threads
+        Thread thread1 = new Thread(new ThreadByRunnable());
+        LOGGER.info("Thread using Runnable is : " + thread1.getName() + " : " + thread1.threadId());
+        thread1.start();
+        Thread thread2 = new ThreadByExtension();
+        LOGGER.info("Thread using Runnable is : " + thread2.getName() + " : " + thread2.threadId());
+        thread2.start();
+
+        Client.connect();
     }
 }
 

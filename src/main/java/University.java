@@ -6,7 +6,8 @@ import people.Student;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import genericLinkedList.GenericLinkedList;
-import java.util.ArrayList;
+
+import java.util.Optional;
 
 public class University implements IRevenueCalculatable {
     private static final Logger LOGGER = LogManager.getLogger(University.class);
@@ -31,12 +32,14 @@ public class University implements IRevenueCalculatable {
 
     public void dropoutStudent(Student student) {
         boolean removed = students.remove(student);
-        if (removed) {
-            LOGGER.info("Student " + student.getFirstName() +" " + student.getLastName() + " has been dropped out of the university.");
-        } else {
-            LOGGER.info("Student " + student.getFirstName() + " " + student.getLastName() + " was not found in the university.");
-        }
+        String message = "Student " + student.getFirstName() + " " + student.getLastName();
+        Optional.of(removed)
+                .ifPresentOrElse(
+                        (isRemoved) -> LOGGER.info(message + " has been dropped out of the university."),
+                        () -> LOGGER.info(message + " was not found in the university.")
+                );
     }
+
 
     public void addStaff(Staff staffMember) {
         this.staff.addFirst(staffMember);

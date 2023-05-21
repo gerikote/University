@@ -1,1 +1,212 @@
-17
+1700:20:32.919 [main] INFO  courses.Course - The student Diego Gonazalez was successfully enrolled in the course Math
+
+00:20:32.924 [main] INFO  courses.Course - The student Ivan Gonazalez was successfully enrolled in the course Math
+
+00:20:32.924 [main] INFO  courses.Course - The student Chris White was successfully enrolled in the course Math
+
+00:20:32.924 [main] INFO  courses.Course - The student Diego Gonazalez was successfully enrolled in the course Biology
+
+00:20:32.924 [main] INFO  courses.Course - The student Ivan Gonazalez was successfully enrolled in the course Biology
+
+00:20:32.925 [main] INFO  courses.Course - The student Chris White was successfully enrolled in the course Biology
+
+00:20:32.925 [main] INFO  courses.Course - The student Diego Gonazalez was successfully enrolled in the course Physics
+
+00:20:32.925 [main] INFO  courses.Course - The student Ivan Gonazalez was successfully enrolled in the course Physics
+
+00:20:32.925 [main] INFO  courses.Course - The student Diego Gonazalez was successfully enrolled in the course Physics
+
+00:20:32.925 [main] INFO  courses.Course - The student Ivan Gonazalez was successfully enrolled in the course Biology
+
+00:20:32.926 [main] INFO  people.GraduateStudent - Hello. My name is John.
+My major is BIOLOGY and my thesis topic is ROBOTICS
+
+00:20:32.931 [main] INFO  people.UndergraduateStudent - Hello. My name is Diego.
+I am on the 1 year and my major is BIOLOGY
+
+00:20:32.931 [main] INFO  people.AcademicStaff - Hello. My name is Professor Clayton.
+and i teach the classes []
+
+00:20:32.931 [main] INFO  people.AcademicStaff - Hello. My name is Carl and i am part of the administrative staff. 
+My responsibilities are [LAB_ASSISTANCE]
+
+00:20:32.932 [main] INFO  people.AcademicStaff - Hello. My name is Tara and i am part of the administrative staff. 
+My responsibilities are [ADMISSIONS]
+
+00:20:32.934 [main] INFO  Demo - {Biology=5, Math=5, Physics=5, Physics=5}
+00:20:32.934 [main] INFO  Demo -  
+00:20:32.938 [main] INFO  people.GraduateStudent - The student John Brown progress at his thesis is currently at 30%
+00:20:32.938 [main] INFO  Demo -  
+00:20:32.938 [main] INFO  people.GraduateStudent - The student John Brown progress at his thesis is currently at 30%
+00:20:32.939 [main] INFO  people.GraduateStudent - The student spent 1 hour studying!
+After the session the progress is at 35%
+
+00:20:32.939 [main] INFO  people.UndergraduateStudent - The grades for student Diego Gonazalez are :{Biology=5, Math=5, Physics=5, Physics=5}
+00:20:32.939 [main] INFO  people.UndergraduateStudent - The student just spent an entire day studying all his classes
+00:20:32.939 [main] INFO  people.UndergraduateStudent - The new grades for student Diego Gonazalez are :{Biology=6, Math=6, Physics=6, Physics=6}
+
+00:20:32.940 [main] INFO  people.Student - The grades for student Diego Gonazalez are :{Biology=6, Math=6, Physics=6, Physics=6}
+00:20:32.940 [main] INFO  people.Student - The student is studying Math
+00:20:32.940 [main] INFO  people.Student - The new grades for student Diego Gonazalez are :{Biology=6, Math=7, Physics=6, Physics=6}
+
+00:20:32.940 [main] INFO  grades.Grade - The student'sDiego Gonazalez gpa is : 
+00:20:32.940 [main] INFO  Demo - 6
+00:20:32.941 [main] INFO  Demo -  
+00:20:32.941 [main] INFO  people.Student - The grades for student Diego Gonazalez are :{Biology=6, Math=7, Physics=6, Physics=6}
+00:20:32.941 [main] INFO  people.Student - The student Diego is ready to give a Math exam
+00:20:32.942 [main] INFO  people.Student - Exam score is : 15/100
+00:20:32.942 [main] INFO  people.Student - Exam failed.Course grade is going to decrease by 1
+00:20:32.942 [main] INFO  people.Student - The new grades for student Diego Gonazalez are :{Biology=6, Math=6, Physics=6, Physics=6}
+
+00:20:32.942 [main] INFO  Demo -  
+00:20:32.944 [main] INFO  people.Student - The student is enrolled in the courses : [Math, Biology, Physics, Physics]
+and the total amount owed in tuition fees is : 1000$
+00:20:32.944 [main] INFO  people.Student - The student is enrolled in the courses : [Math, Biology, Physics, Physics]
+and the total amount owed in tuition fees is : 1000$
+00:20:32.948 [main] INFO  people.Student - The Student Diego Gonazalez with student id : 00004
+ has successfully paid his total tuition of 1000.0$
+00:20:32.948 [main] INFO  Demo -  
+00:20:32.948 [main] INFO  courses.Course - The revenue this course generated is : 750.0$
+00:20:32.948 [main] INFO  Demo -  
+00:20:32.949 [main] INFO  University - The total revenue for the University is : 1250.0$
+00:20:32.949 [main] INFO  Demo -  
+00:20:32.949 [main] INFO  University - Welcome to National Technical University of Athens
+Our university is located in Athens,Zografu
+The courses we offer are : genericLinkedList.GenericLinkedList@52719fb6
+Our wonderful staff includes our teachers : genericLinkedList.GenericLinkedList@3012646b
+
+00:20:32.950 [main] INFO  Demo - Diego Gonazalez is on the first year of his studies
+00:20:32.950 [main] INFO  Demo - For the lecture Math the lecturer is Clayton Tumblerson
+00:20:32.950 [main] INFO  Demo - For the lecture Biology the lecturer is Tom Mullins
+00:20:32.951 [main] INFO  Demo - For the lecture Physics the lecturer is Andrew Richards
+00:20:32.951 [main] INFO  Demo - Lab code for lab Physics is: 101
+00:20:32.951 [main] INFO  Demo - Lab code for lab Biology is: 102
+00:20:32.952 [main] INFO  Demo - The new students name is : John Green
+00:20:32.952 [main] INFO  Demo - Is Diego and Ivan at the same year level ? false
+00:20:32.954 [main] INFO  Demo - Student not found
+00:20:32.955 [main] INFO  Demo - List of undergrads : [Diego Gonazalez, Ivan Gonazalez, Chris White]
+00:20:32.957 [main] INFO  people.AcademicStaff - The professor's Clayton Tumblerson is 30000.0$
+Base pay is 30000.0$ and courses bonus is 0.0$
+00:20:32.957 [main] INFO  people.AcademicStaff - The professor's Tom Mullins is 30000.0$
+Base pay is 30000.0$ and courses bonus is 0.0$
+00:20:32.960 [main] INFO  Demo - Comparing the salaries of : Clayton Tumblerson
+and Tom Mullins
+result: EQUAL
+00:20:32.961 [main] INFO  Demo - Graduate students [John Brown, Maria Foss, Ryan Creed]
+00:20:32.961 [main] INFO  people.Student - The student is enrolled in the courses : [Math, Biology, Physics, Physics]
+and the total amount owed in tuition fees is : 1000$
+00:20:32.961 [main] INFO  people.Student - The student is enrolled in the courses : [Math, Biology, Physics, Biology]
+and the total amount owed in tuition fees is : 1000$
+00:20:32.961 [main] INFO  people.Student - The student is enrolled in the courses : [Math, Biology]
+and the total amount owed in tuition fees is : 500$
+00:20:32.961 [main] INFO  Demo - [Diego Gonazalez, Ivan Gonazalez, Chris White]
+00:20:32.966 [main] INFO  Demo - Thread using Runnable is : Thread-0 : 32
+00:20:32.967 [main] INFO  Demo - Thread using Runnable is : Thread-1 : 33
+00:20:32.968 [Thread-0] INFO  threads.ThreadByRunnable - Thread was created by implementing Runnable : 32
+00:20:32.968 [Thread-1] INFO  threads.ThreadByExtension - Thread created by extending Thread class : 33
+00:20:51.647 [main] INFO  courses.Course - The student Diego Gonazalez was successfully enrolled in the course Math
+
+00:20:51.650 [main] INFO  courses.Course - The student Ivan Gonazalez was successfully enrolled in the course Math
+
+00:20:51.650 [main] INFO  courses.Course - The student Chris White was successfully enrolled in the course Math
+
+00:20:51.650 [main] INFO  courses.Course - The student Diego Gonazalez was successfully enrolled in the course Biology
+
+00:20:51.650 [main] INFO  courses.Course - The student Ivan Gonazalez was successfully enrolled in the course Biology
+
+00:20:51.650 [main] INFO  courses.Course - The student Chris White was successfully enrolled in the course Biology
+
+00:20:51.651 [main] INFO  courses.Course - The student Diego Gonazalez was successfully enrolled in the course Physics
+
+00:20:51.651 [main] INFO  courses.Course - The student Ivan Gonazalez was successfully enrolled in the course Physics
+
+00:20:51.651 [main] INFO  courses.Course - The student Diego Gonazalez was successfully enrolled in the course Physics
+
+00:20:51.651 [main] INFO  courses.Course - The student Ivan Gonazalez was successfully enrolled in the course Biology
+
+00:20:51.652 [main] INFO  people.GraduateStudent - Hello. My name is John.
+My major is BIOLOGY and my thesis topic is ROBOTICS
+
+00:20:51.658 [main] INFO  people.UndergraduateStudent - Hello. My name is Diego.
+I am on the 1 year and my major is BIOLOGY
+
+00:20:51.658 [main] INFO  people.AcademicStaff - Hello. My name is Professor Clayton.
+and i teach the classes []
+
+00:20:51.659 [main] INFO  people.AcademicStaff - Hello. My name is Carl and i am part of the administrative staff. 
+My responsibilities are [LAB_ASSISTANCE]
+
+00:20:51.659 [main] INFO  people.AcademicStaff - Hello. My name is Tara and i am part of the administrative staff. 
+My responsibilities are [ADMISSIONS]
+
+00:20:51.660 [main] INFO  Demo - {Biology=5, Math=5, Physics=5, Physics=5}
+00:20:51.661 [main] INFO  Demo -  
+00:20:51.664 [main] INFO  people.GraduateStudent - The student John Brown progress at his thesis is currently at 30%
+00:20:51.664 [main] INFO  Demo -  
+00:20:51.664 [main] INFO  people.GraduateStudent - The student John Brown progress at his thesis is currently at 30%
+00:20:51.664 [main] INFO  people.GraduateStudent - The student spent 1 hour studying!
+After the session the progress is at 35%
+
+00:20:51.665 [main] INFO  people.UndergraduateStudent - The grades for student Diego Gonazalez are :{Biology=5, Math=5, Physics=5, Physics=5}
+00:20:51.665 [main] INFO  people.UndergraduateStudent - The student just spent an entire day studying all his classes
+00:20:51.665 [main] INFO  people.UndergraduateStudent - The new grades for student Diego Gonazalez are :{Biology=6, Math=6, Physics=6, Physics=6}
+
+00:20:51.665 [main] INFO  people.Student - The grades for student Diego Gonazalez are :{Biology=6, Math=6, Physics=6, Physics=6}
+00:20:51.665 [main] INFO  people.Student - The student is studying Math
+00:20:51.666 [main] INFO  people.Student - The new grades for student Diego Gonazalez are :{Biology=6, Math=7, Physics=6, Physics=6}
+
+00:20:51.666 [main] INFO  grades.Grade - The student'sDiego Gonazalez gpa is : 
+00:20:51.666 [main] INFO  Demo - 6
+00:20:51.667 [main] INFO  Demo -  
+00:20:51.667 [main] INFO  people.Student - The grades for student Diego Gonazalez are :{Biology=6, Math=7, Physics=6, Physics=6}
+00:20:51.667 [main] INFO  people.Student - The student Diego is ready to give a Math exam
+00:20:51.667 [main] INFO  people.Student - Exam score is : 41/100
+00:20:51.668 [main] INFO  people.Student - Exam failed.Course grade is going to decrease by 1
+00:20:51.668 [main] INFO  people.Student - The new grades for student Diego Gonazalez are :{Biology=6, Math=6, Physics=6, Physics=6}
+
+00:20:51.668 [main] INFO  Demo -  
+00:20:51.670 [main] INFO  people.Student - The student is enrolled in the courses : [Math, Biology, Physics, Physics]
+and the total amount owed in tuition fees is : 1000$
+00:20:51.670 [main] INFO  people.Student - The student is enrolled in the courses : [Math, Biology, Physics, Physics]
+and the total amount owed in tuition fees is : 1000$
+00:20:51.675 [main] INFO  people.Student - The Student Diego Gonazalez with student id : 00004
+ has successfully paid his total tuition of 1000.0$
+00:20:51.675 [main] INFO  Demo -  
+00:20:51.676 [main] INFO  courses.Course - The revenue this course generated is : 750.0$
+00:20:51.676 [main] INFO  Demo -  
+00:20:51.676 [main] INFO  University - The total revenue for the University is : 1250.0$
+00:20:51.677 [main] INFO  Demo -  
+00:20:51.677 [main] INFO  University - Welcome to National Technical University of Athens
+Our university is located in Athens,Zografu
+The courses we offer are : genericLinkedList.GenericLinkedList@52719fb6
+Our wonderful staff includes our teachers : genericLinkedList.GenericLinkedList@3012646b
+
+00:20:51.678 [main] INFO  Demo - Diego Gonazalez is on the first year of his studies
+00:20:51.679 [main] INFO  Demo - For the lecture Math the lecturer is Clayton Tumblerson
+00:20:51.679 [main] INFO  Demo - For the lecture Biology the lecturer is Tom Mullins
+00:20:51.679 [main] INFO  Demo - For the lecture Physics the lecturer is Andrew Richards
+00:20:51.679 [main] INFO  Demo - Lab code for lab Physics is: 101
+00:20:51.679 [main] INFO  Demo - Lab code for lab Biology is: 102
+00:20:51.680 [main] INFO  Demo - The new students name is : John Green
+00:20:51.681 [main] INFO  Demo - Is Diego and Ivan at the same year level ? false
+00:20:51.682 [main] INFO  Demo - Student not found
+00:20:51.682 [main] INFO  Demo - List of undergrads : [Diego Gonazalez, Ivan Gonazalez, Chris White]
+00:20:51.685 [main] INFO  people.AcademicStaff - The professor's Clayton Tumblerson is 30000.0$
+Base pay is 30000.0$ and courses bonus is 0.0$
+00:20:51.685 [main] INFO  people.AcademicStaff - The professor's Tom Mullins is 30000.0$
+Base pay is 30000.0$ and courses bonus is 0.0$
+00:20:51.688 [main] INFO  Demo - Comparing the salaries of : Clayton Tumblerson
+and Tom Mullins
+result: EQUAL
+00:20:51.689 [main] INFO  Demo - Graduate students [John Brown, Maria Foss, Ryan Creed]
+00:20:51.689 [main] INFO  people.Student - The student is enrolled in the courses : [Math, Biology, Physics, Physics]
+and the total amount owed in tuition fees is : 1000$
+00:20:51.691 [main] INFO  people.Student - The student is enrolled in the courses : [Math, Biology, Physics, Biology]
+and the total amount owed in tuition fees is : 1000$
+00:20:51.691 [main] INFO  people.Student - The student is enrolled in the courses : [Math, Biology]
+and the total amount owed in tuition fees is : 500$
+00:20:51.691 [main] INFO  Demo - [Diego Gonazalez, Ivan Gonazalez, Chris White]
+00:20:51.696 [main] INFO  Demo - Thread using Runnable is : Thread-0 : 32
+00:20:51.697 [main] INFO  Demo - Thread using Runnable is : Thread-1 : 33
+00:20:51.698 [Thread-1] INFO  threads.ThreadByExtension - Thread created by extending Thread class : 33
+00:20:51.698 [Thread-0] INFO  threads.ThreadByRunnable - Thread was created by implementing Runnable : 32

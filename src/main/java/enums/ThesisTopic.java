@@ -14,11 +14,11 @@ public enum ThesisTopic {
 
     private final String topic;
 
-    private ThesisTopic(String topic){
-        this.topic=topic;
+    private ThesisTopic(String topic) {
+        this.topic = topic;
     }
 
-    public String getTopic(){
+    public String getTopic() {
         return topic;
     }
 }

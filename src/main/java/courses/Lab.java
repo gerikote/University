@@ -10,7 +10,7 @@ public class Lab extends Course {
     public Lab(String courseCode, String courseName, Staff labAssistant, LabRoom labRoom) {
         super(courseCode, courseName);
         this.labAssistant = labAssistant;
-        this.labRoom=labRoom;
+        this.labRoom = labRoom;
     }
 
     public Staff getLabAssistant() {

@@ -17,8 +17,8 @@ public enum AdministrativeResponsibility {
 
     private String responsibilityDescription;
 
-    AdministrativeResponsibility(String responsibilityDescription){
-        this.responsibilityDescription=responsibilityDescription;
+    AdministrativeResponsibility(String responsibilityDescription) {
+        this.responsibilityDescription = responsibilityDescription;
     }
 
     public String getResponsibilityDescription() {
