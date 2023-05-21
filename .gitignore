@@ -30,3 +30,7 @@ bin/
 
 University.iml
 .idea
+/target
+pom.xml
+University.iml
+output.txt
